@@ -19,7 +19,8 @@ constructor(){
     input : "",
     imageUrl: "",
     box : {},
-    route : 'SignIn'
+    route : 'SignIn',
+    isSignedIn : false
   }
 }
 
@@ -34,15 +35,23 @@ onButtonSubmit = async () =>{
 }
 
 onRouteChange = (route)=>{
+  if (route === 'SignOut'){
+    this.setState({isSignedIn : false})
+  }else if (route === 'home'){
+    this.setState({isSignedIn : true})
+
+  }
+
   this.setState({route: route});
 }
 
   render(){
+    const { isSignedIn, route, imageUrl, box} = this.state;
     return( 
       <div className='App'>
         {/* <ParticlesContainer /> */}
-        <Navigation onRouteChange={this.onRouteChange}/>
-        { this.state.route === 'home' 
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+        { route === 'home' 
           ? <div>
               <Logo />
               <Rank />
@@ -50,10 +59,10 @@ onRouteChange = (route)=>{
                 onInputChange={this.onInputChange}  
                 onButtonSubmit={this.onButtonSubmit} 
               />
-              <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} /> 
+              <FaceRecognition box={box} imageUrl={imageUrl} /> 
             </div>   
           : (
-            this.state.route === "SignIn"
+            route === "SignIn"
               ? <SignIn onRouteChange={this.onRouteChange} />
               : <Register onRouteChange={this.onRouteChange} />
             )
