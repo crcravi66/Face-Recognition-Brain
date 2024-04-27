@@ -39,7 +39,7 @@ export const particlesOptions = {
             color: "#ffffff",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.7,
             width: 1,
         },
         move: {
@@ -49,7 +49,7 @@ export const particlesOptions = {
                 default: "bounce",
             },
             random: false,
-            speed: 6,
+            speed: 5,
             straight: false,
         },
         number: {
