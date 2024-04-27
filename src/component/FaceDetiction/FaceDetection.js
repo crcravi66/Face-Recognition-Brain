@@ -64,26 +64,24 @@ if(!imageUrl) return
         console.log(result)
 
         const regions = result.outputs[0].data.regions;
-        // const image =document.getElementById('inputImage');
-        // debugger
-        // console.log(image)
-        // const width = Number(image.width)
-        // const height = Number(image.heigh) 
-
+        const image=document.getElementById('inputImage');
+        console.log(image)
+        const width = Number(image.width)
+        const height = Number(image.height)
          regions.forEach(region => {
             // Accessing and rounding the bounding box values
             const boundingBox = region.region_info.bounding_box;
             
 
-            // const topRow = boundingBox.top_row * height; 
-            // const leftCol = boundingBox.left_col * 500;
-            // const bottomRow = height - (boundingBox.bottom_row * height);
-            // const rightCol = 500 - (boundingBox.right_col * 500);
+            const topRow = boundingBox.top_row * height; 
+            const leftCol = boundingBox.left_col * width;
+            const bottomRow = height - (boundingBox.bottom_row * height);
+            const rightCol = width - (boundingBox.right_col * width);
             
-            const topRow = boundingBox.top_row.toFixed(3); 
-            const leftCol = boundingBox.left_col.toFixed(3);
-            const bottomRow = boundingBox.bottom_row.toFixed(3);
-            const rightCol = boundingBox.right_col.toFixed(3);
+            // const topRow = boundingBox.top_row.toFixed(3); 
+            // const leftCol = boundingBox.left_col.toFixed(3);
+            // const bottomRow = boundingBox.bottom_row.toFixed(3);
+            // const rightCol = boundingBox.right_col.toFixed(3);
 
            testBox = {
                 topRow,
